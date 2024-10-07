@@ -1,0 +1,466 @@
+name: Repository Setup and Issue Publishing
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+     - cron: '*/10 * * * *'  # 每十分钟运行一次
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  create_folders_and_readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Create folders and README.md based on keywords
+        run: |
+          while IFS= read -r keyword; do
+            # 使用 tr 和 iconv 确保正确处理中文字符
+            sanitized_keyword=$keyword
+            echo "Processing sanitized keyword: '$sanitized_keyword'"
+            mkdir -p "$sanitized_keyword"
+
+            # 复制根目录的 index.html 到该文件夹
+            cp index.html "$sanitized_keyword/index.html"
+
+            echo "# ${sanitized_keyword}" > "${sanitized_keyword}/README.md"
+            echo "" >> "${sanitized_keyword}/README.md"
+            echo "# [🍉⎝⎛点击进入⎞⎠🍉](https://kkdd668.cn)">> "${sanitized_keyword}/README.md"
+            echo "## ${sanitized_keyword}" >> "${sanitized_keyword}/README.md"
+            echo "${sanitized_keyword}是一家专注于体育赛事的在线娱乐提供商提供体育赛事直播投注、真人娱乐、棋牌、电竞等，网站注重用户体验，提供便捷的注册和登录，支持多平台和多设备的访问${sanitized_keyword}邀您每日观五大联赛领豪礼，每日每场皆有奖，请点击下面注册入口进行查看~" >> "${sanitized_keyword}/README.md"
+            echo "# [🍉⎝⎛点击进入⎞⎠🍉](https://kkdd668.cn)">> "${sanitized_keyword}/README.md"
+            echo "" >> "${sanitized_keyword}/README.md"
+            echo "## 特点" >> "${sanitized_keyword}/README.md"
+            echo "- 一.品牌效应带来安全保障: ${sanitized_keyword}是备受华人信赖的知名品牌，其口碑卓越，深受华人的赞誉。${sanitized_keyword}在大规模的赞助活动中展现了其实力，与AC米兰足球俱乐部、国际米兰足球俱乐部、切尔西足球俱乐部等知名品牌建立了紧密的战略合作关系。使${sanitized_keyword}成为业内领先者，更为用户提供了可靠、安全的保障，对${sanitized_keyword}品牌充满信心。" >> "${sanitized_keyword}/README.md"
+            echo "- 二.优良的服务: 平台致力于为用户提供优质的体育服务，并提供多样化的体育项目选择。平台还提供奖励活动和赛事直播，为用户带来更多的娱乐和收益。我们一直致力于为广大体育爱好者提供专业、高品质的服务，希望用户在平台上享受到真正的乐趣。" >> "${sanitized_keyword}/README.md"
+            echo "- 三.高额的优惠: ${sanitized_keyword}是一个占据着市场主导地位的服务提供商，为社会提供各种娱乐服务。平台不定期推出各种优惠活动，比如首存优惠、返利活动、充值送礼等等，让玩家在游戏中获得更多的奖励和回报。这一经营理念与我们已经取得的成功相辅相成。" >> "${sanitized_keyword}/README.md"
+            echo "" >> "${sanitized_keyword}/README.md"
+            echo "## 为什么选择${sanitized_keyword}？" >> "${sanitized_keyword}/README.md"
+            echo "${sanitized_keyword}是一家全球领先的在线游戏平台，拥有丰富的游戏种类和优质的服务体验。包括电子游戏、真人游戏、彩票游戏等，能够满足不同玩家的需求。其次，${sanitized_keyword}平台致力于为玩家提供最好的服务体验，以及安全稳定的游戏环境。" >> "${sanitized_keyword}/README.md"
+            echo "## 产品相关" >> "${sanitized_keyword}/README.md"
+            echo "- ${sanitized_keyword}网页版：${sanitized_keyword}网页版为用户提供全方位的服务，友好的界面和流畅的操作体验，支持多平台访问，随时随地都能享受到最新最热门的体育和娱乐游戏。对于部分海外地区的用户，可能需要使用VPN才能访问${sanitized_keyword}网站。" >> "${sanitized_keyword}/README.md"
+            echo "- ${sanitized_keyword}体育App：提供业内最高赔率，覆盖世界各地的赛事，可供用户进行多元竞猜，如让球、大小、半全场、波胆等多种玩法。此外，平台还提供动画直播功能，让用户轻松地观看比赛，同时也可以进行娱乐投注，两者兼顾，尽享乐趣。" >> "${sanitized_keyword}/README.md"
+            echo "- ${sanitized_keyword}全站App：全站App是一款专门为体育爱好者和游戏玩家设计的应用程序，具备流畅的操作和良好的用户体验。用户可以在应用中畅玩海量的体育、电竞顶尖赛事、真人娱乐、彩票投注和电子游艺等娱乐项目。" >> "${sanitized_keyword}/README.md"
+            echo "- <http://leyusports.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://leyutiyu.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://leyutiyu.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://leyutiyu.org.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://leyusports.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://leyusports.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://leyusports.org.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://leyusports.top" >> "${sanitized_keyword}/README.md"
+            echo "- <http://leyuapp.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://leyuapp.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://leyutiyuapp.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://leyutiyuapp.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://leyutiyuapp.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://leyuty.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://leyuty.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://leyuty.top" >> "${sanitized_keyword}/README.md"
+            echo "- <http://ayxsports.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://ayxsports.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://ayxsports.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://ayxsports.vip" >> "${sanitized_keyword}/README.md"
+            echo "- <http://ayxtiyu.net" >> "${sanitized_keyword}/README.md"
+            echo "- <http://ayxtiyu.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://ayxtiyu.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://ayxtiyu.org.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://ayx-sports.cc" >> "${sanitized_keyword}/README.md"
+            echo "- <http://ayx-sports.top" >> "${sanitized_keyword}/README.md"
+            echo "- <http://ayx-sports.org.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://ayx-sports.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://ayx-sports.vip" >> "${sanitized_keyword}/README.md"
+            echo "- <http://ayx-sports.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://ayx-tiyu.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://ayx-tiyu.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://ayx-tiyu.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://ayx-tiyu.top" >> "${sanitized_keyword}/README.md"
+            echo "- <http://ayx-tiyu.cc" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.leyusports.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.leyutiyu.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.leyutiyu.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.leyutiyu.org.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.leyusports.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.leyusports.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.leyusports.org.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.leyusports.top" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.leyuapp.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.leyuapp.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.leyutiyuapp.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.leyutiyuapp.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.leyutiyuapp.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.leyuty.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.leyuty.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.leyuty.top" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.ayxsports.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.ayxsports.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.ayxsports.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.ayxsports.vip" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.ayxtiyu.net" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.ayxtiyu.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.ayxtiyu.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.ayxtiyu.org.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.ayx-sports.cc" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.ayx-sports.top" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.ayx-sports.org.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.ayx-sports.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.ayx-sports.vip" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.ayx-sports.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.ayx-tiyu.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.ayx-tiyu.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.ayx-tiyu.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.ayx-tiyu.top" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.ayx-tiyu.cc" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.leyusports.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.leyutiyu.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.leyutiyu.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.leyutiyu.org.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.leyusports.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.leyusports.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.leyusports.org.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.leyusports.top" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.leyuapp.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.leyuapp.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.leyutiyuapp.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.leyutiyuapp.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.leyutiyuapp.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.leyuty.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.leyuty.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.leyuty.top" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.ayxsports.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.ayxsports.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.ayxsports.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.ayxsports.vip" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.ayxtiyu.net" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.ayxtiyu.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.ayxtiyu.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.ayxtiyu.org.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.ayx-sports.cc" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.ayx-sports.top" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.ayx-sports.org.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.ayx-sports.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.ayx-sports.vip" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.ayx-sports.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.ayx-tiyu.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.ayx-tiyu.com.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.ayx-tiyu.net.cn" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.ayx-tiyu.top" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.ayx-tiyu.cc" >> "${sanitized_keyword}/README.md"
+            echo "- <http://long8-net.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://long8-web.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://long8-long8.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://long8-wanjia.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://cn-long8.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://zh-long8.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://long8guoji.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://long8thwj.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://web-long8.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://longbaguoji.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://home-long8.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://qq-long8.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://long8yule.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://touhaowanjia8.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://long8wanjia.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.long8-net.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.long8-web.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.long8-long8.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.long8-wanjia.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.cn-long8.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.zh-long8.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.long8guoji.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.long8thwj.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.web-long8.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.longbaguoji.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.home-long8.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.qq-long8.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.long8yule.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.touhaowanjia8.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://www.long8wanjia.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.long8-net.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.long8-web.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.long8-long8.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.long8-wanjia.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.cn-long8.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.zh-long8.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.long8guoji.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.long8thwj.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.web-long8.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.longbaguoji.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.home-long8.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.qq-long8.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.long8yule.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.touhaowanjia8.com" >> "${sanitized_keyword}/README.md"
+            echo "- <http://m.long8wanjia.com" >> "${sanitized_keyword}/README.md"
+          done < keywords/3.txt
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add .
+          git commit -m "Add GitHub Actions workflow and keywords folder" || echo "No changes to commit"
+          git push origin main
+
+  publish_issues:
+    runs-on: ubuntu-latest
+    needs: create_folders_and_readme
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install GitHub CLI
+        run: |
+          sudo apt-get install gh -y
+
+      - name: Publish unique issues based on keywords
+        run: |
+          gh auth login --with-token <<< ${{ secrets.GITHUB_TOKEN }}
+          echo "Reading keywords from file..."
+          cat keywords/3.txt
+          cat keywords/4.txt
+
+          repos=$(gh repo list ${{ github.repository_owner }} --limit 100 --json name --jq '.[] | .name')
+          # 将所有仓库放入一个数组中
+          repos_array=($repos)
+          
+          # 随机选择 10 个关键词
+          awk 'BEGIN {srand()} !/^$/ {lines[NR]=$0} END {for (i=1; i<=10; i++) {print lines[int(rand()*NR)+1]}}' keywords/4.txt > random_keywords.txt
+          
+          #主页链接
+          random_links=()
+          for (( i=1; i<=10; i++ )); do
+              # 每次随机选择一个仓库名
+              random_repo=${repos_array[$RANDOM % ${#repos_array[@]}]}
+              random_links+=("<https://${{ github.repository_owner }}.github.io/$random_repo>")
+          done
+          
+          # 将生成的链接输出以供调试
+          for link in "${random_links[@]}"; do
+            echo "Generated link: $link"
+          done
+
+          #分页链接
+          random_flinks=()
+          random_plinks=()
+          # 逐行读取 3.txt 中的随机行到 random_keywords 数组中
+          mapfile -t random_keywords < <(shuf -n 10 ./keywords/3.txt)
+
+          # 函数：将特殊字符进行 URL 编码
+          url_encode() {
+              local string="${1}"
+              # 使用 sed 替换特殊字符
+              echo "$string" | sed -e 's/ /%20/g' -e 's/|/%7C/g'
+          }
+
+          # 循环生成分页链接
+          for (( i=0; i<10; i++ )); do
+              random_keyword="${random_keywords[$i]}"
+
+              # 确保 random_keyword 不为空
+              if [[ -n "$random_keyword" ]]; then
+                  # 对关键字进行 URL 编码
+                  encoded_keyword=$(url_encode "$random_keyword")
+                  # 判断是否 repository_owner.github.io 和 repository.name 相同
+                  if [[ "${{ github.repository_owner }}.github.io" == "${{ github.event.repository.name }}" ]]; then
+                      # 如果相同，执行另一种链接的拼接
+                      random_flinks+=("<https://${{ github.repository_owner }}.github.io/$encoded_keyword>")
+                  else
+                      # 否则使用常规拼接方式
+                      random_flinks+=("<https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/$encoded_keyword>")
+                  fi
+                  random_plinks+=("<https://${{ github.event.repository.name }}.pages.dev/$encoded_keyword>")
+              fi
+          done
+
+          # 将生成的链接输出以供调试
+          for link in "${random_flinks[@]}"; do
+            echo "Generated link: $link"
+          done
+
+          cat keywords/4.txt | sort | uniq | while IFS= read -r keyword; do
+            echo "Processing keyword: $keyword"
+
+            # 将随机关键词列表格式化为字符串
+            random_keywords_str=$(awk '{printf "%s, ", $0}' random_keywords.txt | sed 's/, $//')
+
+            existing_issue=$(gh issue list --search "Issue: $keyword" --json title --jq '.[] | select(.title == "Issue: $keyword") | .title')
+
+            if [ -z "$existing_issue" ]; then
+              echo "Creating issue for keyword: $keyword"
+              gh issue create                 --title "$keyword"                 --body "# ${keyword}
+       
+            ## ${keyword}
+   
+            ${keyword}是一家专注于体育赛事的在线娱乐提供商提供体育赛事直播投注、真人娱乐、棋牌、电竞等，网站注重用户体验，提供便捷的注册和登录，支持多平台和多设备的访问${keyword}邀您每日观五大联赛领豪礼，每日每场皆有奖，请点击下面注册入口进行查看~
+    
+            ${keyword}网页版：${keyword}网页版为用户提供全方位的服务，友好的界面和流畅的操作体验，支持多平台访问，随时随地都能享受到最新最热门的体育和娱乐游戏。对于部分海外地区的用户，可能需要使用VPN才能访问${keyword}网站。
+            
+            ${keyword}体育App：提供业内最高赔率，覆盖世界各地的赛事，可供用户进行多元竞猜，如让球、大小、半全场、波胆等多种玩法。此外，平台还提供动画直播功能，让用户轻松地观看比赛，同时也可以进行娱乐投注，两者兼顾，尽享乐趣。
+            
+            ${keyword}全站App：全站App是一款专门为体育爱好者和游戏玩家设计的应用程序，具备流畅的操作和良好的用户体验。用户可以在应用中畅玩海量的体育、电竞顶尖赛事、真人娱乐、彩票投注和电子游艺等娱乐项目。
+            
+            【Tag:】$random_keywords_str
+
+            ### 相关推荐：
+
+            <http://leyusports.cn>
+            <http://leyutiyu.com.cn>
+            <http://leyutiyu.net.cn>
+            <http://leyutiyu.org.cn>
+            <http://leyusports.com.cn>
+            <http://leyusports.net.cn>
+            <http://leyusports.org.cn>
+            <http://leyusports.top>
+            <http://leyuapp.com.cn>
+            <http://leyuapp.net.cn>
+            <http://leyutiyuapp.cn>
+            <http://leyutiyuapp.com.cn>
+            <http://leyutiyuapp.net.cn>
+            <http://leyuty.com.cn>
+            <http://leyuty.net.cn>
+            <http://leyuty.top>
+            <http://ayxsports.cn>
+            <http://ayxsports.com.cn>
+            <http://ayxsports.net.cn>
+            <http://ayxsports.vip>
+            <http://ayxtiyu.net>
+            <http://ayxtiyu.com.cn>
+            <http://ayxtiyu.net.cn>
+            <http://ayxtiyu.org.cn>
+            <http://ayx-sports.cc>
+            <http://ayx-sports.top>
+            <http://ayx-sports.org.cn>
+            <http://ayx-sports.net.cn>
+            <http://ayx-sports.vip>
+            <http://ayx-sports.com.cn>
+            <http://ayx-tiyu.cn>
+            <http://ayx-tiyu.com.cn>
+            <http://ayx-tiyu.net.cn>
+            <http://ayx-tiyu.top>
+            <http://ayx-tiyu.cc>
+            <http://www.leyusports.cn>
+            <http://www.leyutiyu.com.cn>
+            <http://www.leyutiyu.net.cn>
+            <http://www.leyutiyu.org.cn>
+            <http://www.leyusports.com.cn>
+            <http://www.leyusports.net.cn>
+            <http://www.leyusports.org.cn>
+            <http://www.leyusports.top>
+            <http://www.leyuapp.com.cn>
+            <http://www.leyuapp.net.cn>
+            <http://www.leyutiyuapp.cn>
+            <http://www.leyutiyuapp.com.cn>
+            <http://www.leyutiyuapp.net.cn>
+            <http://www.leyuty.com.cn>
+            <http://www.leyuty.net.cn>
+            <http://www.leyuty.top>
+            <http://www.ayxsports.cn>
+            <http://www.ayxsports.com.cn>
+            <http://www.ayxsports.net.cn>
+            <http://www.ayxsports.vip>
+            <http://www.ayxtiyu.net>
+            <http://www.ayxtiyu.com.cn>
+            <http://www.ayxtiyu.net.cn>
+            <http://www.ayxtiyu.org.cn>
+            <http://www.ayx-sports.cc>
+            <http://www.ayx-sports.top>
+            <http://www.ayx-sports.org.cn>
+            <http://www.ayx-sports.net.cn>
+            <http://www.ayx-sports.vip>
+            <http://www.ayx-sports.com.cn>
+            <http://www.ayx-tiyu.cn>
+            <http://www.ayx-tiyu.com.cn>
+            <http://www.ayx-tiyu.net.cn>
+            <http://www.ayx-tiyu.top>
+            <http://www.ayx-tiyu.cc>
+            <http://m.leyusports.cn>
+            <http://m.leyutiyu.com.cn>
+            <http://m.leyutiyu.net.cn>
+            <http://m.leyutiyu.org.cn>
+            <http://m.leyusports.com.cn>
+            <http://m.leyusports.net.cn>
+            <http://m.leyusports.org.cn>
+            <http://m.leyusports.top>
+            <http://m.leyuapp.com.cn>
+            <http://m.leyuapp.net.cn>
+            <http://m.leyutiyuapp.cn>
+            <http://m.leyutiyuapp.com.cn>
+            <http://m.leyutiyuapp.net.cn>
+            <http://m.leyuty.com.cn>
+            <http://m.leyuty.net.cn>
+            <http://m.leyuty.top>
+            <http://m.ayxsports.cn>
+            <http://m.ayxsports.com.cn>
+            <http://m.ayxsports.net.cn>
+            <http://m.ayxsports.vip>
+            <http://m.ayxtiyu.net>
+            <http://m.ayxtiyu.com.cn>
+            <http://m.ayxtiyu.net.cn>
+            <http://m.ayxtiyu.org.cn>
+            <http://m.ayx-sports.cc>
+            <http://m.ayx-sports.top>
+            <http://m.ayx-sports.org.cn>
+            <http://m.ayx-sports.net.cn>
+            <http://m.ayx-sports.vip>
+            <http://m.ayx-sports.com.cn>
+            <http://m.ayx-tiyu.cn>
+            <http://m.ayx-tiyu.com.cn>
+            <http://m.ayx-tiyu.net.cn>
+            <http://m.ayx-tiyu.top>
+            <http://m.ayx-tiyu.cc>
+            <http://long8-net.com>
+            <http://long8-web.com>
+            <http://long8-long8.com>
+            <http://long8-wanjia.com>
+            <http://cn-long8.com>
+            <http://zh-long8.com>
+            <http://long8guoji.com>
+            <http://long8thwj.com>
+            <http://web-long8.com>
+            <http://longbaguoji.com>
+            <http://home-long8.com>
+            <http://qq-long8.com>
+            <http://long8yule.com>
+            <http://touhaowanjia8.com>
+            <http://long8wanjia.com>
+            <http://www.long8-net.com>
+            <http://www.long8-web.com>
+            <http://www.long8-long8.com>
+            <http://www.long8-wanjia.com>
+            <http://www.cn-long8.com>
+            <http://www.zh-long8.com>
+            <http://www.long8guoji.com>
+            <http://www.long8thwj.com>
+            <http://www.web-long8.com>
+            <http://www.longbaguoji.com>
+            <http://www.home-long8.com>
+            <http://www.qq-long8.com>
+            <http://www.long8yule.com>
+            <http://www.touhaowanjia8.com>
+            <http://www.long8wanjia.com>
+            <http://m.long8-net.com>
+            <http://m.long8-web.com>
+            <http://m.long8-long8.com>
+            <http://m.long8-wanjia.com>
+            <http://m.cn-long8.com>
+            <http://m.zh-long8.com>
+            <http://m.long8guoji.com>
+            <http://m.long8thwj.com>
+            <http://m.web-long8.com>
+            <http://m.longbaguoji.com>
+            <http://m.home-long8.com>
+            <http://m.qq-long8.com>
+            <http://m.long8yule.com>
+            <http://m.touhaowanjia8.com>
+            <http://m.long8wanjia.com>"
+            
+            else
+              echo "Issue for keyword '$keyword' already exists, skipping."
+            fi
+          done
